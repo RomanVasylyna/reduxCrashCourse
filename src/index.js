@@ -4,6 +4,13 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { createStore } from 'redux';
+import reducers from './reducers';
+import { Provider } from 'react-redux';
+
+
+// Create a store with reducer as a param
+let store = createStore(reducers);
+// store.subscribe(() => console.log(store.getState()));
 
 // Redux parts :
 // 1. Store - global state that can be accessed from everywhere in the app
@@ -12,45 +19,46 @@ import { createStore } from 'redux';
 // it checks which action is called and store will be modified accordingly
 
 // Increase number of pets
-const petIncrement = () => {
-  return {
-    type: "PET_INCREASED"
-  }
-}
+// const petIncrement = () => {
+//   return {
+//     type: "PET_INCREASED"
+//   }
+// }
 
-const petDecrement = () => {
-  return {
-    type: "PET_DECREASED"
-  }
-}
+// const petDecrement = () => {
+//   return {
+//     type: "PET_DECREASED"
+//   }
+// }
 
 // 3. Reducer - condition that changes an action from one state to another
-const petCounter = (state=0, action) => {
-  switch (action.type) {
-    case "PET_INCREASED":
-      return state + 1;
-    case "PET_DECREASED":
-      return state - 1;
-    default:
-      return state;
-  }
-}
+// const petCounter = (state=0, action) => {
+//   switch (action.type) {
+//     case "PET_INCREASED":
+//       return state + 1;
+//     case "PET_DECREASED":
+//       return state - 1;
+//     default:
+//       return state;
+//   }
+// }
 
 
-let store = createStore(petCounter); // Create a store with reducer as a param
-store.subscribe(() => console.log(store.getState()));
+// let store = createStore(petCounter); // Create a store with reducer as a param
+// store.subscribe(() => console.log(store.getState()));
 
 
 // 4. Dispatch - changes store via reducer
-store.dispatch(petIncrement());
-store.dispatch(petIncrement());
-store.dispatch(petDecrement());
-
+// store.dispatch(petIncrement());
+// store.dispatch(petIncrement());
+// store.dispatch(petDecrement());
 
 
 ReactDOM.render(
   <React.StrictMode>
+    <Provider store={store}>
     <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
