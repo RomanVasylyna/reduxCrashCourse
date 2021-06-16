@@ -22,11 +22,13 @@ cursor: 'pointer',
 marginRight: '5px'
 };
 
+
+
   return (
     <div className="App">
     <h1>Pet counter : {petCounter}</h1>
     <h1>Favourite Pets : {petFavourite}</h1>
-    <button style={btnStyle} onClick={() => dispatch(petIncrement())}>Add Pet</button>
+    <button style={btnStyle} onClick={() => dispatch(petIncrement(2))}>Add Pet</button>
     <button style={btnStyle} onClick={() => dispatch(petDecrement())}>Remove Pet</button>
     </div>
   );
